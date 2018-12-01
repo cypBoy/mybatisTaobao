@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icss.dao.GoodsDao">
+
+    <resultMap type="com.icss.entity.Goods" id="GoodsList" >
+        <id column="id" property="id"/>
+        <result column="no" property="no"/>
+        <result column="name" property="name"/>
+        <result column="type" property="type"/>
+        <result column="price" property="price"/>
+    </resultMap>
+
+    <select id="listByPage" parameterType="map" resultMap="GoodsList">
+        select *  from goods limit #{index},#{pageSize}
+    </select>
+
+    <select id="getCount" parameterType="int" resultType="int">
+        select count(*) from goods
+    </select>
+</mapper>

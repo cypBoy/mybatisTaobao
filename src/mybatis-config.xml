@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+     <!--  将 jdbc的配置文件 关联起来 -->
+      <properties resource="jdbc.properties"></properties>
+      <!--  声明重命名 -->
+      <typeAliases>
+      <!--  
+        <typeAlias type="com.icss.entity.Customer" alias="Customer"/>
+        <typeAlias type="com.icss.entity.Product"  alias="Product" />
+      -->
+      <!--  将整个包下面的文件进行重命名，命名默认是 类名 -->
+       <package name="com.icss.entity"/>
+      </typeAliases>
+      
+	 <environments default="developmet">
+	      <environment id="developmet">
+	            <transactionManager type="JDBC"/>
+			    <dataSource type="POOLED">
+			           <property name="driver" value="${driver}" />
+		               <property name="url" value="${url}" />
+		               <property name="username" value="${username}" />
+		               <property name="password" value="${pwd}" />
+			    </dataSource>
+	     </environment>
+	     <environment id="test">
+	            <transactionManager type="JDBC"/>
+			    <dataSource type="POOLED">
+			           <property name="driver" value="${driver}" />
+		               <property name="url" value="${url}" />
+		               <property name="username" value="${username}" />
+		               <property name="password" value="${pwd}" />
+			    </dataSource>
+	     </environment>
+	 </environments>
+	 
+	 <mappers>
+		 <mapper resource="com/icss/dao/CustomerDao.xml"/>
+
+		 <mapper resource="com/icss/dao/GoodsDao.xml"/>
+	 
+	 </mappers>
+</configuration>
